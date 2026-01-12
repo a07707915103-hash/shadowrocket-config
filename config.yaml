@@ -1,6 +1,6 @@
 #---------------------------------------------------
 # 完整合并订阅文件
-# 内核要求：Mihomo (Clash Meta)
+# 核心：Mihomo (Clash Meta)
 #---------------------------------------------------
 
 port: 7890
@@ -17,7 +17,7 @@ dns:
     - 223.5.5.5
 
 proxies:
-  # --- 第一份文件中的节点 ---
+  # --- [原文件1] 现有节点 ---
   - name: "🇺🇸US²_2|5.8MB/s|7%|GPT⁺|YT-DE|TK|NF|X|Succeed|[广播|机房]"
     type: vless
     server: picassooo.info
@@ -49,7 +49,6 @@ proxies:
       early-data-header-name: Sec-WebSocket-Protocol
       max-early-data: 2560
 
-  # --- 第二份文件（新提取）的节点 ---
   - name: "🇸🇬SG¹-CA⁰_1|13.6MB/s|GM|YT|D+|X|History|[广播|机房]"
     type: vless
     server: 151.101.3.8
@@ -133,11 +132,69 @@ proxies:
       early-data-header-name: Sec-WebSocket-Protocol
       max-early-data: 2560
 
+  # --- [原文件2] 新增提取节点 ---
+  - name: "🇺🇸US¹⁺_5|2.6MB/s|3%|GPT⁺|GM|YT|D+|X|[原生|机房]"
+    type: vless
+    server: cloudflare.182682.xyz
+    port: 443
+    uuid: 3e2e3c21-3fc8-468f-9ab5-e782bdf5bf97
+    network: ws
+    tls: true
+    servername: l.ayovo.netlib.re
+    ws-opts:
+      path: /
+      headers:
+        Host: l.ayovo.netlib.re
+      early-data-header-name: Sec-WebSocket-Protocol
+      max-early-data: 2560
+
+  - name: "🇺🇸US¹⁺_1|2.4MB/s|3%|GPT|GM|NF|D+|X|History|[原生|机房]"
+    type: vless
+    server: cloudflare.182682.xyz
+    port: 443
+    uuid: 3e2e3c21-3fc8-468f-9ab5-e782bdf5bf97
+    udp: true
+    xudp: true
+    network: ws
+    tls: true
+    servername: l.ayovo.netlib.re
+    ws-opts:
+      path: /?ed=2560
+      headers:
+        Host: l.ayovo.netlib.re
+        User-Agent: "Mozilla/5.0 (Linux; Android 8.0.0; FIG-LX3 Build/HUAWEIFIG-LX3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Mobile Safari/537.36"
+
+  - name: "🇺🇸US¹⁺_4|3.8MB/s|3%|GPT⁺|YT|TK|NF|D+|X|History|[原生|机房]"
+    type: vless
+    server: 162.159.44.142
+    port: 443
+    uuid: 3e2e3c21-3fc8-468f-9ab5-e782bdf5bf97
+    udp: true
+    xudp: true
+    network: ws
+    tls: true
+    servername: l.ayovo.netlib.re
+    ws-opts:
+      path: /?ed=2560
+      headers:
+        Host: l.ayovo.netlib.re
+        User-Agent: "Mozilla/5.0 (Linux; Android 6.0.1; SM-G532G Build/MMB29T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.83 Mobile Safari/537.36"
+
+  - name: "🇩🇪DE²_3|1.8MB/s|0%|GPT⁺|YT|TK-GB|NF|D+|X|[广播|商宽]"
+    type: hysteria2
+    server: 89.144.35.25
+    port: 33550
+    password: dongtaiwang.com
+    tls: false
+    skip-cert-verify: true
+    sni: apple.com
+
 proxy-groups:
   - name: 🚀 我的精选订阅
     type: select
     proxies:
       - ⚡ 自动选择
+      # 原有节点
       - "🇺🇸US²_2|5.8MB/s|7%|GPT⁺|YT-DE|TK|NF|X|Succeed|[广播|机房]"
       - "🇭🇰HK¹-US⁰_1|8.2MB/s|3%|GPT⁺|YT|D+|X|Succeed|[广播|机房]"
       - "🇸🇬SG¹-CA⁰_1|13.6MB/s|GM|YT|D+|X|History|[广播|机房]"
@@ -146,12 +203,18 @@ proxy-groups:
       - "🇭🇰HK²_27|0.5MB/s|X|History|[原生|住宅]"
       - "🇺🇸US¹⁺_6|2.1MB/s|3%|GPT|NF|D+|X|History|[原生|机房]"
       - "🇺🇸US¹⁺_7|5.2MB/s|GPT⁺|YT|NF|D+|X|History|[原生|机房]"
+      # 新增节点
+      - "🇺🇸US¹⁺_5|2.6MB/s|3%|GPT⁺|GM|YT|D+|X|[原生|机房]"
+      - "🇺🇸US¹⁺_1|2.4MB/s|3%|GPT|GM|NF|D+|X|History|[原生|机房]"
+      - "🇺🇸US¹⁺_4|3.8MB/s|3%|GPT⁺|YT|TK|NF|D+|X|History|[原生|机房]"
+      - "🇩🇪DE²_3|1.8MB/s|0%|GPT⁺|YT|TK-GB|NF|D+|X|[广播|商宽]"
 
   - name: ⚡ 自动选择
     type: url-test
     url: http://www.gstatic.com/generate_204
     interval: 300
     proxies:
+      # 原有节点
       - "🇺🇸US²_2|5.8MB/s|7%|GPT⁺|YT-DE|TK|NF|X|Succeed|[广播|机房]"
       - "🇭🇰HK¹-US⁰_1|8.2MB/s|3%|GPT⁺|YT|D+|X|Succeed|[广播|机房]"
       - "🇸🇬SG¹-CA⁰_1|13.6MB/s|GM|YT|D+|X|History|[广播|机房]"
@@ -160,6 +223,11 @@ proxy-groups:
       - "🇭🇰HK²_27|0.5MB/s|X|History|[原生|住宅]"
       - "🇺🇸US¹⁺_6|2.1MB/s|3%|GPT|NF|D+|X|History|[原生|机房]"
       - "🇺🇸US¹⁺_7|5.2MB/s|GPT⁺|YT|NF|D+|X|History|[原生|机房]"
+      # 新增节点
+      - "🇺🇸US¹⁺_5|2.6MB/s|3%|GPT⁺|GM|YT|D+|X|[原生|机房]"
+      - "🇺🇸US¹⁺_1|2.4MB/s|3%|GPT|GM|NF|D+|X|History|[原生|机房]"
+      - "🇺🇸US¹⁺_4|3.8MB/s|3%|GPT⁺|YT|TK|NF|D+|X|History|[原生|机房]"
+      - "🇩🇪DE²_3|1.8MB/s|0%|GPT⁺|YT|TK-GB|NF|D+|X|[广播|商宽]"
 
 rules:
   - GEOIP,CN,DIRECT
