@@ -1,0 +1,166 @@
+#---------------------------------------------------
+# 完整合并订阅文件
+# 内核要求：Mihomo (Clash Meta)
+#---------------------------------------------------
+
+port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+ipv6: false
+
+dns:
+  enable: true
+  enhanced-mode: fake-ip
+  nameserver:
+    - 119.29.29.29
+    - 223.5.5.5
+
+proxies:
+  # --- 第一份文件中的节点 ---
+  - name: "🇺🇸US²_2|5.8MB/s|7%|GPT⁺|YT-DE|TK|NF|X|Succeed|[广播|机房]"
+    type: vless
+    server: picassooo.info
+    port: 22955
+    uuid: 63f92f3c-447c-4283-80b9-0af8e164cdad
+    udp: true
+    tls: true
+    network: grpc
+    servername: one-piece.com
+    reality-opts:
+      public-key: 9Mt_Y8J_qDb1khlieWnhDSAq-kGtLHw6aOKgkAzOMms
+      short-id: 6ba85179e30d4fc2
+    grpc-opts:
+      grpc-service-name: "gun"
+
+  - name: "🇭🇰HK¹-US⁰_1|8.2MB/s|3%|GPT⁺|YT|D+|X|Succeed|[广播|机房]"
+    type: vless
+    server: 104.16.250.22
+    port: 443
+    uuid: 3e2e3c21-3fc8-468f-9ab5-e782bdf5bf97
+    udp: true
+    tls: true
+    network: ws
+    servername: l.ayovo.netlib.re
+    ws-opts:
+      path: /
+      headers:
+        Host: l.ayovo.netlib.re
+      early-data-header-name: Sec-WebSocket-Protocol
+      max-early-data: 2560
+
+  # --- 第二份文件（新提取）的节点 ---
+  - name: "🇸🇬SG¹-CA⁰_1|13.6MB/s|GM|YT|D+|X|History|[广播|机房]"
+    type: vless
+    server: 151.101.3.8
+    port: 80
+    uuid: dd0cfef0-fda9-47ec-8a65-49d7bc004f82
+    udp: true
+    network: ws
+    xudp: true
+    ws-opts:
+      path: /---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN/---@MiTiVPN
+      headers:
+        Host: mitivpn.global.ssl.fastly.net
+        User-Agent: "Mozilla/5.0 (Linux; Android 6.0.1; Redmi 4A Build/MMB29M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.116 Mobile Safari/537.36"
+
+  - name: "🇺🇸US¹⁺_2|5.6MB/s|GPT|GM|YT|NF|X|History|[原生|机房]"
+    type: vless
+    server: 162.159.16.63
+    port: 443
+    uuid: 3e2e3c21-3fc8-468f-9ab5-e782bdf5bf97
+    udp: true
+    tls: true
+    servername: l.ayovo.netlib.re
+    network: ws
+    ws-opts:
+      path: /
+      headers:
+        Host: l.ayovo.netlib.re
+      early-data-header-name: Sec-WebSocket-Protocol
+      max-early-data: 2560
+
+  - name: "🇭🇰HK²_26|5.9MB/s|1%|D+|X|Succeed|[原生|住宅]"
+    type: vmess
+    server: hkt.gotochinatown.net
+    port: 80
+    uuid: 48e51dfa-db8f-11ed-a23f-f23c91369f2d
+    alterId: 0
+    cipher: auto
+    udp: true
+    network: ws
+    ws-opts:
+      path: /
+      headers:
+        Host: hkt.gotochinatown.net
+
+  - name: "🇭🇰HK²_27|0.5MB/s|X|History|[原生|住宅]"
+    type: trojan
+    server: 58.152.46.60
+    port: 443
+    password: BxceQaOe
+    udp: true
+    tls: true
+    skip-cert-verify: true
+    sni: "%20%5BBy%20EbraSha%5D%20b2n.ir%2Fv2ray-configs%20%7C%2088%20"
+
+  - name: "🇺🇸US¹⁺_6|2.1MB/s|3%|GPT|NF|D+|X|History|[原生|机房]"
+    type: vless
+    server: 162.159.45.232
+    port: 443
+    uuid: 3e2e3c21-3fc8-468f-9ab5-e782bdf5bf97
+    udp: true
+    tls: true
+    servername: l.ayovo.netlib.re
+    network: ws
+    ws-opts:
+      path: "/?ed=2560"
+      headers:
+        Host: l.ayovo.netlib.re
+
+  - name: "🇺🇸US¹⁺_7|5.2MB/s|GPT⁺|YT|NF|D+|X|History|[原生|机房]"
+    type: vless
+    server: 162.159.45.232
+    port: 443
+    uuid: 3e2e3c21-3fc8-468f-9ab5-e782bdf5bf97
+    tls: true
+    servername: l.ayovo.netlib.re
+    network: ws
+    ws-opts:
+      path: /
+      headers:
+        Host: l.ayovo.netlib.re
+      early-data-header-name: Sec-WebSocket-Protocol
+      max-early-data: 2560
+
+proxy-groups:
+  - name: 🚀 我的精选订阅
+    type: select
+    proxies:
+      - ⚡ 自动选择
+      - "🇺🇸US²_2|5.8MB/s|7%|GPT⁺|YT-DE|TK|NF|X|Succeed|[广播|机房]"
+      - "🇭🇰HK¹-US⁰_1|8.2MB/s|3%|GPT⁺|YT|D+|X|Succeed|[广播|机房]"
+      - "🇸🇬SG¹-CA⁰_1|13.6MB/s|GM|YT|D+|X|History|[广播|机房]"
+      - "🇺🇸US¹⁺_2|5.6MB/s|GPT|GM|YT|NF|X|History|[原生|机房]"
+      - "🇭🇰HK²_26|5.9MB/s|1%|D+|X|Succeed|[原生|住宅]"
+      - "🇭🇰HK²_27|0.5MB/s|X|History|[原生|住宅]"
+      - "🇺🇸US¹⁺_6|2.1MB/s|3%|GPT|NF|D+|X|History|[原生|机房]"
+      - "🇺🇸US¹⁺_7|5.2MB/s|GPT⁺|YT|NF|D+|X|History|[原生|机房]"
+
+  - name: ⚡ 自动选择
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    proxies:
+      - "🇺🇸US²_2|5.8MB/s|7%|GPT⁺|YT-DE|TK|NF|X|Succeed|[广播|机房]"
+      - "🇭🇰HK¹-US⁰_1|8.2MB/s|3%|GPT⁺|YT|D+|X|Succeed|[广播|机房]"
+      - "🇸🇬SG¹-CA⁰_1|13.6MB/s|GM|YT|D+|X|History|[广播|机房]"
+      - "🇺🇸US¹⁺_2|5.6MB/s|GPT|GM|YT|NF|X|History|[原生|机房]"
+      - "🇭🇰HK²_26|5.9MB/s|1%|D+|X|Succeed|[原生|住宅]"
+      - "🇭🇰HK²_27|0.5MB/s|X|History|[原生|住宅]"
+      - "🇺🇸US¹⁺_6|2.1MB/s|3%|GPT|NF|D+|X|History|[原生|机房]"
+      - "🇺🇸US¹⁺_7|5.2MB/s|GPT⁺|YT|NF|D+|X|History|[原生|机房]"
+
+rules:
+  - GEOIP,CN,DIRECT
+  - MATCH,🚀 我的精选订阅
