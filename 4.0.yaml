@@ -1,0 +1,220 @@
+# Clash 配置文件 - 合并版
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: rule
+log-level: info
+unified-delay: true
+tcp-concurrent: true
+external-controller: 127.0.0.1:9090
+
+dns:
+  enable: true
+  ipv6: true
+  default-nameserver: [223.5.5.5, 119.29.29.29, 114.114.114.114]
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  use-hosts: true
+  nameserver: ['https://dns.alidns.com/dns-query', 'https://doh.pub/dns-query']
+  fallback: ['https://223.5.5.5/dns-query', '8.8.4.4', '208.67.220.220']
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite: [gfw]
+    ipcidr: [240.0.0.0/4, 0.0.0.0/32]
+    domain: [+.google.com, +.facebook.com, +.youtube.com]
+
+proxies:
+  # [cite_start]--- 提取自 nano.txt (关键词：猎户座、优选) --- [cite: 1, 2, 3, 4, 5, 6]
+  - { name: ❇️猎户座-BGP-A, server: bgpa.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.1530fe2e.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a }
+  - { name: ❇️优选-X(通用), type: anytls, server: tgtwa.102435eb-fe2e-41ce-9d32-034a0bb644d8.902d52f1.edu-header-airport.com, port: 62212, password: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a, client-fingerprint: chrome, udp: true, alpn: [h2, http/1.1], sni: www.bing.com, skip-cert-verify: true }
+  - { name: ❇️猎户座-BGP-B, server: bgpb.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.cc16bd23.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a }
+  - { name: ❇️猎户座-BGP-C, server: bgpc.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.7b0b7c27.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a }
+  - { name: ❇️猎户座-BGP-D, server: bgpd.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.7e5b3b39.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a }
+  - { name: ❇️猎户座-BGP-E, server: bgpe.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.c946fa3d.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a }
+  - { name: ❇️猎户座-BGP-F, server: bgpf.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.1060b930.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a }
+  - { name: ❇️猎户座-BGP-G, type: tuic, server: bgpg.c9aee41f-979e-48be-8ad5-e0c8eb90f38c.a77d7834.demo-chat-airport.com, port: 18662, uuid: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a, password: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
+  - { name: ❇️猎户座-BGP-H, type: tuic, server: bgph.edc75321-7544-48f3-aea1-3068c0711ea8.1ac0370c.demo-chat-airport.com, port: 18662, uuid: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a, password: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
+  - { name: ❇️猎户座-BGP-I, type: tuic, server: bgpI.96ce655c-9bd0-449c-8bc5-28e6dc3e141c.adddf608.demo-chat-airport.com, port: 18662, uuid: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a, password: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
+  - { name: ❇️猎户座-BGP-J, type: tuic, server: bgpj.553996da-bd33-4177-882c-dcb1b09f5f88.74fbb505.demo-chat-airport.com, port: 18662, uuid: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a, password: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
+  - { name: ❇️优选-A(通用), type: anytls, server: bgpe.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.c946fa3d.demo-chat-airport.com, port: 62212, password: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a, client-fingerprint: chrome, udp: true, alpn: [h2, http/1.1], sni: www.bing.com, skip-cert-verify: true }
+  - { name: ❇️优选-B(流量), type: anytls, server: bgpf.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.1060b930.demo-chat-airport.com, port: 62212, password: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a, client-fingerprint: chrome, udp: true, alpn: [h2, http/1.1], sni: www.bing.com, skip-cert-verify: true }
+  - { name: ❇️优选-C(通用), type: anytls, server: bgpI.96ce655c-9bd0-449c-8bc5-28e6dc3e141c.adddf608.demo-chat-airport.com, port: 62212, password: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a, client-fingerprint: chrome, udp: true, alpn: [h2, http/1.1], sni: www.bing.com, skip-cert-verify: true }
+  - { name: ❇️优选-D(流量), type: anytls, server: bgpI.96ce655c-9bd0-449c-8bc5-28e6dc3e141c.adddf608.demo-chat-airport.com, port: 62212, password: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a, client-fingerprint: chrome, udp: true, alpn: [h2, http/1.1], sni: www.bing.com, skip-cert-verify: true }
+  - { name: ❇️优选-E(通用), type: anytls, server: bgpg.c9aee41f-979e-48be-8ad5-e0c8eb90f38c.a77d7834.demo-chat-airport.com, port: 62212, password: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a, client-fingerprint: chrome, udp: true, alpn: [h2, http/1.1], sni: www.bing.com, skip-cert-verify: true }
+  - { name: ❇️优选-F(流量), type: anytls, server: bgph.edc75321-7544-48f3-aea1-3068c0711ea8.1ac0370c.edu-header-airport.com, port: 62212, password: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a, client-fingerprint: chrome, udp: true, alpn: [h2, http/1.1], sni: www.bing.com, skip-cert-verify: true }
+  - { name: ❇️优选-G(通用), type: anytls, server: bgpa.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.1530fe2e.edu-header-airport.com, port: 62212, password: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a, client-fingerprint: chrome, udp: true, alpn: [h2, http/1.1], sni: www.bing.com, skip-cert-verify: true }
+  - { name: ❇️优选-H(流量), type: anytls, server: bgpb.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.cc16bd23.edu-header-airport.com, port: 62212, password: 03197cdf-a9cc-4e98-a8b6-c79cdbe7b30a, client-fingerprint: chrome, udp: true, alpn: [h2, http/1.1], sni: www.bing.com, skip-cert-verify: true }
+
+  # [cite_start]--- 提取自 新节点.txt (所有节点) --- [cite: 17, 18, 19, 20, 21, 22, 23, 24, 25]
+  - {name: 中国香港 移动, server: 104.16.255.124, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qy.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /live/rank/about/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qy.ssdxz.cn}}}
+  - {name: 中国香港 移动 2, server: 104.17.222.63, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qw.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /categories/member/home/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qw.ssdxz.cn}}}
+  - {name: 中国香港 移动 3, server: 104.16.254.77, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: ss.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /groups/u/m/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: ss.ssdxz.cn}}}
+  - {name: 中国香港 移动 4, server: 104.18.44.113, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qt.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /mobile/about/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qt.ssdxz.cn}}}
+  - {name: 中国香港 移动 5, server: 104.16.243.245, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qr.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /tags/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qr.ssdxz.cn}}}
+  - {name: 美国圣何塞 联通, server: 104.18.233.250, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qe.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /buy/go/forum/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qe.ssdxz.cn}}}
+  - {name: 美国圣何塞 联通 2, server: 104.16.10.50, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qy.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /service/live/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qy.ssdxz.cn}}}
+  - {name: 美国圣何塞 联通 3, server: 104.17.108.21, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qw.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /books/drama/knowledge/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qw.ssdxz.cn}}}
+  - {name: 美国圣何塞 联通 4, server: 104.18.202.51, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: ss.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /torrent/shop/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: ss.ssdxz.cn}}}
+  - {name: 新加坡 电信, server: 162.159.24.138, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qt.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /player/site/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qt.ssdxz.cn}}}
+  - {name: 新加坡 电信 2, server: 162.159.1.212, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qr.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /discount/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qr.ssdxz.cn}}}
+  - {name: 新加坡 电信 3, server: 162.159.4.200, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qe.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /items/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qe.ssdxz.cn}}}
+  - {name: 新加坡 电信 4, server: 162.159.42.36, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qy.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /pdf/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qy.ssdxz.cn}}}
+  - {name: 新加坡 电信 5, server: 162.159.12.87, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qw.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /teacher/jump.php/classify/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qw.ssdxz.cn}}}
+  - {name: 新加坡 三网, server: 104.18.44.151, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: ss.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /jump.html/links/class/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: ss.ssdxz.cn}}}
+  - {name: 新加坡 三网 2, server: 172.64.147.37, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qt.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /special/games/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qt.ssdxz.cn}}}
+  - {name: 新加坡 三网 3, server: 104.18.43.134, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qr.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /static/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qr.ssdxz.cn}}}
+  - {name: 新加坡 三网 4, server: 104.18.43.45, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qe.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /thread/messages/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qe.ssdxz.cn}}}
+  - {name: 中国香港 三网, server: 104.18.40.34, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qy.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /gif/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qy.ssdxz.cn}}}
+  - {name: 美国 旧金山 IPDB（ V4 ）, server: 172.64.159.213, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qw.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /download/cb/zh-cn/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qw.ssdxz.cn}}}
+  - {name: 美国 旧金山 IPDB（ V4 ） 2, server: 104.17.144.235, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: ss.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /mall/ask/forum/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: ss.ssdxz.cn}}}
+  - {name: 美国 旧金山 IPDB（ V4 ） 3, server: 104.17.182.11, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qt.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /album/jump.php/hot/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qt.ssdxz.cn}}}
+  - {name: 美国 旧金山 IPDB（ V4 ） 4, server: 104.16.158.249, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qr.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /vip/list/archive/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qr.ssdxz.cn}}}
+  - {name: 美国 旧金山 IPDB（ V4 ） 5, server: 172.64.152.111, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qe.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /study/share/special/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qe.ssdxz.cn}}}
+  - {name: 美国 旧金山 IPDB（ V4 ） 6, server: 104.17.22.240, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qy.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /mall/video/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qy.ssdxz.cn}}}
+  - {name: 美国 旧金山 IPDB（ V4 ） 7, server: 104.18.95.26, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qw.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /game/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qw.ssdxz.cn}}}
+  - {name: 美国 旧金山 IPDB（ V4 ） 8, server: 104.16.248.48, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: ss.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /blogs/clip/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: ss.ssdxz.cn}}}
+  - {name: 美国 旧金山 IPDB（ V4 ） 9, server: 104.16.251.148, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qt.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /stars/seasons/member/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qt.ssdxz.cn}}}
+  - {name: 美国 旧金山 IPDB（ V4 ） 10, server: 172.64.145.194, port: 443, type: vless, uuid: 29ff2954-dfea-4d20-8089-059cfa861453, tls: true, skip-cert-verify: true, servername: qr.ssdxz.cn, client-fingerprint: chrome, network: ws, ws-opts: {path: /en/proxyip=ProxyIP.SG.CMLiussss.net/proxyip=tw.william.us.ci, headers: {Host: qr.ssdxz.cn}}}
+
+proxy-groups:
+  - name: 🚀 日常主力
+    type: select
+    proxies:
+      - ⚡️ 日常自动测速
+      - ❇️猎户座-BGP-A
+      - ❇️优选-X(通用)
+      - ❇️猎户座-BGP-B
+      - ❇️猎户座-BGP-C
+      - ❇️猎户座-BGP-D
+      - ❇️猎户座-BGP-E
+      - ❇️猎户座-BGP-F
+      - ❇️猎户座-BGP-G
+      - ❇️猎户座-BGP-H
+      - ❇️猎户座-BGP-I
+      - ❇️猎户座-BGP-J
+      - ❇️优选-A(通用)
+      - ❇️优选-B(流量)
+      - ❇️优选-C(通用)
+      - ❇️优选-D(流量)
+      - ❇️优选-E(通用)
+      - ❇️优选-F(流量)
+      - ❇️优选-G(通用)
+      - ❇️优选-H(流量)
+
+  - name: ⚡️ 日常自动测速
+    type: url-test
+    url: http://www.google.com/generate_204
+    interval: 1800
+    tolerance: 50
+    proxies:
+      - ❇️猎户座-BGP-A
+      - ❇️优选-X(通用)
+      - ❇️猎户座-BGP-B
+      - ❇️猎户座-BGP-C
+      - ❇️猎户座-BGP-D
+      - ❇️猎户座-BGP-E
+      - ❇️猎户座-BGP-F
+      - ❇️猎户座-BGP-G
+      - ❇️猎户座-BGP-H
+      - ❇️猎户座-BGP-I
+      - ❇️猎户座-BGP-J
+      - ❇️优选-A(通用)
+      - ❇️优选-B(流量)
+      - ❇️优选-C(通用)
+      - ❇️优选-D(流量)
+      - ❇️优选-E(通用)
+      - ❇️优选-F(流量)
+      - ❇️优选-G(通用)
+      - ❇️优选-H(流量)
+
+  - name: 🎬 视频专用
+    type: select
+    proxies:
+      - 🎡 视频自动测速
+      - 中国香港 移动
+      - 中国香港 移动 2
+      - 中国香港 移动 3
+      - 中国香港 移动 4
+      - 中国香港 移动 5
+      - 美国圣何塞 联通
+      - 美国圣何塞 联通 2
+      - 美国圣何塞 联通 3
+      - 美国圣何塞 联通 4
+      - 新加坡 电信
+      - 新加坡 电信 2
+      - 新加坡 电信 3
+      - 新加坡 电信 4
+      - 新加坡 电信 5
+      - 新加坡 三网
+      - 新加坡 三网 2
+      - 新加坡 三网 3
+      - 新加坡 三网 4
+      - 中国香港 三网
+      - 美国 旧金山 IPDB（ V4 ）
+      - 美国 旧金山 IPDB（ V4 ） 2
+      - 美国 旧金山 IPDB（ V4 ） 3
+      - 美国 旧金山 IPDB（ V4 ） 4
+      - 美国 旧金山 IPDB（ V4 ） 5
+      - 美国 旧金山 IPDB（ V4 ） 6
+      - 美国 旧金山 IPDB（ V4 ） 7
+      - 美国 旧金山 IPDB（ V4 ） 8
+      - 美国 旧金山 IPDB（ V4 ） 9
+      - 美国 旧金山 IPDB（ V4 ） 10
+
+  - name: 🎡 视频自动测速
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 1800
+    tolerance: 50
+    proxies:
+      - 中国香港 移动
+      - 中国香港 移动 2
+      - 中国香港 移动 3
+      - 中国香港 移动 4
+      - 中国香港 移动 5
+      - 美国圣何塞 联通
+      - 美国圣何塞 联通 2
+      - 美国圣何塞 联通 3
+      - 美国圣何塞 联通 4
+      - 新加坡 电信
+      - 新加坡 电信 2
+      - 新加坡 电信 3
+      - 新加坡 电信 4
+      - 新加坡 电信 5
+      - 新加坡 三网
+      - 新加坡 三网 2
+      - 新加坡 三网 3
+      - 新加坡 三网 4
+      - 中国香港 三网
+      - 美国 旧金山 IPDB（ V4 ）
+      - 美国 旧金山 IPDB（ V4 ） 2
+      - 美国 旧金山 IPDB（ V4 ） 3
+      - 美国 旧金山 IPDB（ V4 ） 4
+      - 美国 旧金山 IPDB（ V4 ） 5
+      - 美国 旧金山 IPDB（ V4 ） 6
+      - 美国 旧金山 IPDB（ V4 ） 7
+      - 美国 旧金山 IPDB（ V4 ） 8
+      - 美国 旧金山 IPDB（ V4 ） 9
+      - 美国 旧金山 IPDB（ V4 ） 10
+
+rules:
+  # 注意：这里使用了全角括号 （ ），确保与新节点.txt中的定义完全一致
+  - DOMAIN-SUFFIX,x.com,美国 旧金山 IPDB（ V4 ） 2
+  - DOMAIN-SUFFIX,twitter.com,美国 旧金山 IPDB（ V4 ） 2
+
+  # 2. Emby直连 (从 nano.txt 逻辑延伸)
+  - DOMAIN-SUFFIX,miraiemby.com,DIRECT
+  - DOMAIN-SUFFIX,wwcgrn.cn,DIRECT
+  - DOMAIN-SUFFIX,etflix.lol,DIRECT
+  - DOMAIN-SUFFIX,indevs.in,DIRECT
+  - DOMAIN-SUFFIX,de5.net,DIRECT
+
+  # 3. 视频分流
+  - DOMAIN-SUFFIX,youtube.com,🎬 视频专用
+  - DOMAIN-SUFFIX,googlevideo.com,🎬 视频专用
+  - DOMAIN-KEYWORD,emby,🎬 视频专用
+  - DOMAIN-KEYWORD,netflix,🎬 视频专用
+
+  # 4. 默认兜底
+  - MATCH,🚀 日常主力
