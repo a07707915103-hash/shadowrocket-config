@@ -1,0 +1,88 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: Rule
+log-level: info
+external-controller: :9090
+
+dns:
+  enable: true
+  ipv6: false
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  fallback:
+    - 8.8.8.8
+    - 1.1.1.1
+
+proxies:
+  - {name: 🇺🇸 美国 0515, server: f627db1c-t9zts0-thv9l4-1jbj0.sj.oshuawei.com, port: 443, type: http, username: b2c6384c-f63d-11ec-b1b3-f23c91cfbbc9, password: b2c6384c-f63d-11ec-b1b3-f23c91cfbbc9, tls: true}
+  - {name: 🇺🇸 美国 0557, server: ecc59263-t9zts0-tc59t3-81nv.sj.oshuawei.com, port: 443, type: http, username: 47e91fb6-25b8-df52-bc18-3cdc8548192f, password: 47e91fb6-25b8-df52-bc18-3cdc8548192f, tls: true}
+  - {name: 🇺🇸 美国 0354, server: af5a56d9-t9zts0-tc9wl2-py5w.cu.oshuawei.com, port: 15229, type: http, username: ae5338ae-9a70-58c9-3d47-7d54a5675715, password: ae5338ae-9a70-58c9-3d47-7d54a5675715, tls: true}
+  - {name: 🇺🇸 美国 0776, server: 59122412-t9zts0-tan99f-1rdqg.se.oshuawei.com, port: 443, type: http, username: 2b57ec48-0da4-11ef-8f35-f23c913c8d2b, password: 2b57ec48-0da4-11ef-8f35-f23c913c8d2b, tls: true}
+  - {name: 🇺🇸 美国 0137, server: 8efbd54c-t9zts0-tphxte-1h5u7.sjc.oshuawei.com, port: 443, type: http, username: e3fdbd22-8c17-11ee-ace4-f23c913c8d2b, password: e3fdbd22-8c17-11ee-ace4-f23c913c8d2b, tls: true}
+  - {name: 🇺🇸 美国 0635, server: b030099f-t9zts0-ta42cg-1phla.sj.oshuawei.com, port: 443, type: http, username: 467f2940-77cd-11ee-b5ed-f23c9164ca5d, password: 467f2940-77cd-11ee-b5ed-f23c9164ca5d, tls: true}
+  - {name: 🇺🇸 美国 0600, server: 965b2995-t9zts0-tbnucr-1thfv.sj.oshuawei.com, port: 443, type: http, username: 0a4d1c88-fb3a-11ef-8c3f-f23c913c8d2b, password: 0a4d1c88-fb3a-11ef-8c3f-f23c913c8d2b, tls: true}
+  - {name: 🇺🇸 美国 0663, server: bb788fbf-t9zts0-tb5nzx-1mqag.sj.oshuawei.com, port: 443, type: http, username: b585dac6-dc69-11ef-9f1c-f23c913c8d2b, password: b585dac6-dc69-11ef-9f1c-f23c913c8d2b, tls: true}
+  - {name: 🇺🇸 美国 0053, server: 56924745-t9zts0-tb016b-1m7l4.sjc.oshuawei.com, port: 443, type: http, username: bd515574-3b10-11ee-ac14-f23c9164ca5d, password: bd515574-3b10-11ee-ac14-f23c9164ca5d, tls: true}
+  - {name: 🇺🇸 美国 0672, server: fd8ad392-t9zts0-tsdg75-tlhh.sj.oshuawei.com, port: 443, type: http, username: bdf3e15e-c64c-11ea-82ef-f23c9164ca5d, password: bdf3e15e-c64c-11ea-82ef-f23c9164ca5d, tls: true}
+  - {name: 🇺🇸 美国 0030, server: 985763d9-t9zts0-tac59v-i8ie.sjc.oshuawei.com, port: 443, type: http, username: 990e8f34-bd4f-11ef-bdb9-f23c91cfbbc9, password: 990e8f34-bd4f-11ef-bdb9-f23c91cfbbc9, tls: true}
+  - {name: 🇺🇸 美国 0683, server: 02e29a23-t9zts0-tdadcv-1hd7v.sj.oshuawei.com, port: 443, type: http, username: f73c64bc-9e8c-11ec-bd7c-f23c913c8d2b, password: f73c64bc-9e8c-11ec-bd7c-f23c913c8d2b, tls: true}
+  - {name: 🇺🇸 美国 0850, server: 3ce483da-t9zts0-tawg6w-1rfon.se.oshuawei.com, port: 443, type: http, username: aed1cc24-351d-11ef-ba52-f23c9164ca5d, password: aed1cc24-351d-11ef-ba52-f23c9164ca5d, tls: true}
+  - {name: 🇺🇸 美国 0967, server: 154.83.2.156, port: 2086, type: vmess, uuid: 92373ed1-78a8-4cbe-aa06-54af1edd0471, alterId: 0, cipher: auto}
+  - {name: 🇺🇸 美国 0693, server: 104.19.250.98, port: 2083, type: vless, uuid: ce035748-9913-40c9-9fb6-c8389f7cdcf3, tls: true, network: ws, ws-opts: {path: "/?ed=2560", headers: {Host: yousef.varzesh.dpdns.org}}}
+  - {name: 🇺🇸 美国 0986, server: 174.138.61.184, port: 1080, type: socks5}
+
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - ☑️ 手动切换
+      - DIRECT
+
+  - name: ☑️ 手动切换
+    type: select
+    proxies:
+      - DIRECT
+      - 🇺🇸 美国 0515
+      - 🇺🇸 美国 0557
+      - 🇺🇸 美国 0354
+      - 🇺🇸 美国 0776
+      - 🇺🇸 美国 0137
+      - 🇺🇸 美国 0635
+      - 🇺🇸 美国 0600
+      - 🇺🇸 美国 0663
+      - 🇺🇸 美国 0053
+      - 🇺🇸 美国 0672
+      - 🇺🇸 美国 0030
+      - 🇺🇸 美国 0683
+      - 🇺🇸 美国 0850
+      - 🇺🇸 美国 0967
+      - 🇺🇸 美国 0693
+      - 🇺🇸 美国 0986
+
+  - name: ♻️ 自动选择
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
+    proxies:
+      - 🇺🇸 美国 0515
+      - 🇺🇸 美国 0557
+      - 🇺🇸 美国 0354
+      - 🇺🇸 美国 0776
+      - 🇺🇸 美国 0137
+      - 🇺🇸 美国 0635
+      - 🇺🇸 美国 0600
+      - 🇺🇸 美国 0663
+      - 🇺🇸 美国 0053
+      - 🇺🇸 美国 0672
+      - 🇺🇸 美国 0030
+      - 🇺🇸 美国 0683
+      - 🇺🇸 美国 0850
+      - 🇺🇸 美国 0967
+      - 🇺🇸 美国 0693
+
+rules:
+  - MATCH,🚀 节点选择
